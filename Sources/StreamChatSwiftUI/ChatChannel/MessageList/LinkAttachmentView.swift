@@ -71,6 +71,7 @@ public struct LinkAttachmentContainer<Factory: ViewFactory>: View {
 public struct LinkAttachmentView: View {
     @Injected(\.colors) private var colors
     @Injected(\.fonts) private var fonts
+    @Environment(\.openURL) var openURL
     
     private let padding: CGFloat = 8
     
@@ -124,7 +125,7 @@ public struct LinkAttachmentView: View {
         .padding(.horizontal, padding)
         .onTapGesture {
             if let url = linkAttachment.originalURL.secureURL, UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:])
+                openURL(url)
             }
         }
         .accessibilityIdentifier("LinkAttachmentView")

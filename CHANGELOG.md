@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Configuration for stack based navigation for iPads
 - Customization of the reactions background
 - Possibility to add custom snapshot generation logic
+- Possibility to hook into `LinkAttachmentView`'s URL loading via custom [OpenURLActions](https://developer.apple.com/documentation/swiftui/openurlaction)
 
 ### 🐞 Fixed
 - iOS 16 keyboard insets issue on pushed screen

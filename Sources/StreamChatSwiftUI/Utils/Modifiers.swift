@@ -89,3 +89,31 @@ extension Image {
             .scaledToFit()
     }
 }
+
+public struct ScrollDismissesKeyboard: ViewModifier {
+    public init() {}
+
+    public func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            LazyContent {
+                content
+                    .scrollDismissesKeyboard(.interactively)
+            }
+        } else {
+            content
+        }
+    }
+
+    // workaround for crashes in inline checks #available(iOS 16.0, *)
+    private struct LazyContent<Content: View>: View {
+        let content: () -> Content
+
+        init(@ViewBuilder content: @escaping () -> Content) {
+            self.content = content
+        }
+
+        var body: some View {
+            content()
+        }
+    }
+}

@@ -163,6 +163,7 @@ public struct MessageListView<Factory: ViewFactory>: View, KeyboardReadable {
                     }
                     .modifier(factory.makeMessageListModifier())
                 }
+                .modifier(ScrollDismissesKeyboard())
                 .background(
                     factory.makeMessageListBackground(
                         colors: colors,
@@ -184,10 +185,10 @@ public struct MessageListView<Factory: ViewFactory>: View, KeyboardReadable {
                         if scrollButtonShown != showScrollToLatestButton {
                             showScrollToLatestButton = scrollButtonShown
                         }
-                        if keyboardShown && diff < -20 {
-                            keyboardShown = false
-                            resignFirstResponder()
-                        }
+//                        if keyboardShown && diff < -20 {
+//                            keyboardShown = false
+//                            resignFirstResponder()
+//                        }
                     }
                 }
                 .flippedUpsideDown()
